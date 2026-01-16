@@ -1,0 +1,1 @@
+DEFAULT_DIAGRAM_TYPE="classDiagram"
