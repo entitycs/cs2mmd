@@ -25,6 +25,14 @@ Welcome to cs2mmd! This tool helps you generate  Mermaid diagrams from your C# c
 
 ### Configuration ⚙️
 
+#### Target Codebase 🎯
+Defined by default is an example 'Unity' project location. You can update it in the compose file.
+This is where the system expects to find one or more instances of [**`VirtualFile`**](https://github.com/entitycs/cs2mmd/blob/main/src/mermaid_class/core/models.py#L4) if not defined by `content` fields.
+```yaml
+  mermaid-openapi:
+    volumes:
+      - &unity "${C_ROOT}${PROJECT_1}:/workspace/src/UnityAssets"
+```
 #### Compose Secrets 🔒
 Keep your sensitive info safe! Use Docker Compose secrets to avoid exposing passwords in images or environment variables.
 
@@ -49,7 +57,7 @@ By default, servers run on ports 8084 and 8085.
 You'll see health checks in the OpenAPI container logs. All 505/OK? ✅
 
 ##### HTTP Test
-- Head to http://localhost:8084/docs to explore and test endpoints interactively. Fun and easy! 🎉
+- Head to http://localhost:8084/docs to explore and test endpoints interactively. (or /redoc) 🎉
 
 ##### Module Test
 - Run `pytest` from inside either container to execute pre-defined tests. Verify everything works! (including the experimental [Pygres](https://github.com/entitycs/Pygres) library🔍, used to store inputs into a PostgreSQL database so that you can track what your agents are sending, and what this system will attempt to process) 🧑‍🔬.
